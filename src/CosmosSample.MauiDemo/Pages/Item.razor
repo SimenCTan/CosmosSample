@@ -1,0 +1,62 @@
+﻿@page "/item"
+@using CosmosSample.Data
+@using CosmosSample.Domain
+@using Microsoft.EntityFrameworkCore
+@inject CosmosContext CosmosContext
+
+<h3>Incomplete items (@todos.Count(todo => !todo.Completed))</h3>
+<ul>
+    @foreach (var todo in todos)
+    {
+        <li>
+            <input type="checkbox" @bind="todo.Completed" />
+            <input @bind="todo.Name" />
+			<input @bind="todo.Description" />
+        </li>
+    }
+</ul>
+
+<input placeholder="New todo name" @bind="name" />
+<input placeholder="Description" @bind="description"/>
+<button @onclick="AddTodo">Add todo</button>
+<br />
+<input style="color:red" @bind="message"></input>
+
+@code {
+	private List<TodoItem> todos = new();
+
+	private string message { get; set; } = string.Empty;
+
+	private string name { get; set; } = string.Empty;
+
+	private string description { get; set; } = string.Empty;
+
+	protected override void OnInitialized()
+	{
+		todos = CosmosContext.TodoItems.ToList();
+		base.OnInitialized();
+	}
+
+	private async Task AddTodo()
+	{
+		var existItem = await CosmosContext.TodoItems.WithPartitionKey(name).FirstOrDefaultAsync();
+		if (existItem != null)
+		{
+			message = "item name exist";
+			return;
+		}
+		var newItem = new TodoItem
+			{
+				Id = Guid.NewGuid().ToString(),
+				Completed = false,
+				Description = description,
+				Name = name
+			};
+		CosmosContext.Add(newItem);
+		await CosmosContext.SaveChangesAsync();
+		todos.Add(newItem);
+		name = string.Empty;
+		description = string.Empty;
+        message = string.Empty;
+	}
+}

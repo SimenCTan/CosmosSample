@@ -20,6 +20,15 @@ namespace CosmosSample.Data
                 var cosmosOptions = sp
                        .GetRequiredService<IOptions<CosmosOptions>>()
                        .Value;
+
+                // for maui
+                //cosmosOptions = new CosmosOptions
+                //{
+                //    EndPoint = "",
+                //    AccessKey = "",
+                //    DatabaseName = "ToDoList"
+                //};
+
                 options.UseCosmos(cosmosOptions.EndPoint,
                        cosmosOptions.AccessKey,
                        cosmosOptions.DatabaseName);
