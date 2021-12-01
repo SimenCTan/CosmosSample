@@ -48,11 +48,10 @@
 		var newItem = new TodoItem
 			{
 				Id = Guid.NewGuid().ToString(),
-				Completed = false,
-				Description = description,
-				Name = name
+				Name = name,
+				Description=description
 			};
-		CosmosContext.Add(newItem);
+		CosmosContext.TodoItems.Add(newItem);
 		await CosmosContext.SaveChangesAsync();
 		todos.Add(newItem);
 		name = string.Empty;

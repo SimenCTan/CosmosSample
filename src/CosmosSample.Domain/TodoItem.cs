@@ -7,16 +7,12 @@ namespace CosmosSample.Domain
     /// </summary>
     public class TodoItem
     {
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; } = default!;
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
-        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; } = default!;
 
-        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }=default!;
 
-        [JsonProperty(PropertyName = "isComplete")]
         public bool Completed { get; set; }
     }
 }

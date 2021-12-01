@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Components.Web;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.Configure<CosmosOptions>(builder.Configuration.GetSection(nameof(CosmosOptions)));
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddCosmosDbContext();
+builder.Services.AddCosmosDbContext(builder.Configuration.GetConnectionString("CosmosConnectionString"),
+    builder.Configuration.GetConnectionString("CosmosDBName"));
 
 var app = builder.Build();
 

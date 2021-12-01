@@ -56,6 +56,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Configs\**" />
+	  <Content Remove="Configs\**" />
+	  <EmbeddedResource Remove="Configs\**" />
+	  <MauiXaml Remove="Configs\**" />
+	  <None Remove="Configs\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Content Remove="Properties\launchSettings.json" />
 	</ItemGroup>
 
@@ -64,7 +72,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Configs\" />
+	  <_MauiXamlToRemove Remove="Configs\**" />
 	</ItemGroup>
 
 </Project>
