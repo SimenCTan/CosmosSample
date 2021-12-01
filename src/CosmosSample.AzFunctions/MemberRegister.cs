@@ -1,63 +1,46 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using CosmosSample.Data;
+using CosmosSample.Domain.Entities;
+using CosmosSample.Domain.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using CosmosSample.Domain.Configurations;
-using CosmosSample.Data;
-using Microsoft.Extensions.Options;
-using CosmosSample.Domain;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace CosmosSample_AzFunctions
 {
     public class MemberRegister
     {
         private readonly CosmosContext _cosmosdbContext;
-        public MemberRegister(IOptions<CosmosOptions> options,
-            CosmosContext cosmosContext)
+        public MemberRegister(CosmosContext cosmosContext)
         {
             _cosmosdbContext = cosmosContext;
         }
 
         [FunctionName("MemberRegister")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-            string name = req.Query["name"];
+            // await _cosmosdbContext.Database.EnsureDeletedAsync();
+            // await _cosmosdbContext.Database.EnsureCreatedAsync();
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-
-            await _cosmosdbContext.Database.EnsureCreatedAsync();
-            name = name ?? data?.name;
-            try
+            log.LogInformation(requestBody);
+            var memberEntity = JsonConvert.DeserializeObject<MemberEntity>(requestBody);
+            var existMember = await _cosmosdbContext.MemberEntities.WithPartitionKey(memberEntity.Email).FirstOrDefaultAsync();
+            if (existMember != null)
             {
-                var ddditem = await _cosmosdbContext.TodoItems.WithPartitionKey(name).FirstOrDefaultAsync();
-                var newItem = new TodoItem
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "testgogo",
-                    Description = "this is test"
-                };
-                _cosmosdbContext.Add(newItem);
-                _cosmosdbContext.SaveChanges();
+                return new OkObjectResult(new StatusResponseResult { Code = -1, Message = "failed email has exist" });
             }
-            catch (Exception ex)
-            {
-                log.LogError(ex.Message);
-            }
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-            return new OkObjectResult(responseMessage);
+            memberEntity.Id = Guid.NewGuid().ToString();
+            _cosmosdbContext.MemberEntities.Add(memberEntity);
+            await _cosmosdbContext.SaveChangesAsync();
+            return new OkObjectResult(new StatusResponseResult { Code = 0, Message = "success" });
         }
     }
 }
