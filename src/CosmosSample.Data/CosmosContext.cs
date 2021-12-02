@@ -26,15 +26,18 @@ namespace CosmosSample.Data
         /// </summary>
         public DbSet<MemberEntity> MemberEntities => Set<MemberEntity>();
 
+        public DbSet<SymbolEntity> Symbols => Set<SymbolEntity>();
+
         /// <summary>
         ///  Configure the model that maps the domain to the backend.
         /// </summary>
         /// <param name="modelBuilder">The API for model configuration.</param>
-        protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultContainer(nameof(CosmosContext));
 
-            modelBuilder.Entity<TodoItem>(entity => {
+            modelBuilder.Entity<TodoItem>(entity =>
+            {
                 entity.HasNoDiscriminator();
                 entity.HasPartitionKey(e => e.Name);
             });
@@ -43,6 +46,13 @@ namespace CosmosSample.Data
             {
                 entity.HasPartitionKey(e => e.Email);
                 entity.ToContainer(nameof(MemberEntity));
+            });
+
+            modelBuilder.Entity<SymbolEntity>(entity =>
+            {
+                entity.HasPartitionKey(e => e.TSCode);
+                entity.HasKey(e => new { e.Symbol, e.Exchange });
+                entity.ToContainer(nameof(Symbols));
             });
             base.OnModelCreating(modelBuilder);
         }

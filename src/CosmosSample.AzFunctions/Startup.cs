@@ -34,6 +34,7 @@ namespace CosmosSample_AzFunctions
             var configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>();
             builder.Services.AddCosmosDbContext(configuration.GetConnectionString("CosmosConnectionString"),
                 configuration.GetConnectionString("CosmosDBName"));
+            builder.Services.AddAutoMapper(typeof(Startup));
         }
 
 

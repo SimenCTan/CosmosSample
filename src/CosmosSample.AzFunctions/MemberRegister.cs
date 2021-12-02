@@ -27,7 +27,7 @@ namespace CosmosSample_AzFunctions
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            // await _cosmosdbContext.Database.EnsureDeletedAsync();
+            // init cosmos db
             // await _cosmosdbContext.Database.EnsureCreatedAsync();
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             log.LogInformation(requestBody);
