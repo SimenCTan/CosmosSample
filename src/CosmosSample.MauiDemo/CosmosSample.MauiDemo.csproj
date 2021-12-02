@@ -75,4 +75,8 @@
 	  <_MauiXamlToRemove Remove="Configs\**" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
+	</ItemGroup>
+
 </Project>

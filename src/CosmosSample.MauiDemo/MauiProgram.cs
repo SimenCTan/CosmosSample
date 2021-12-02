@@ -19,8 +19,6 @@ namespace CosmosSample.MauiDemo
 				});
 			builder.Services.AddBlazorWebView();
 			builder.Services.AddSingleton<WeatherForecastService>();
-            builder.Services.Configure<CosmosOptions>(builder.Configuration.GetSection(nameof(CosmosOptions)));
-            builder.Services.AddCosmosDbContext();
             var host = builder.Build();
             return host;
 		}
