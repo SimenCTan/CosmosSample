@@ -16,7 +16,7 @@
 }
 ```
 3. 进入CosmosSample.AzFunctions目录运行 func start（确保已经安装工具 [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash%2Ckeda) ）
-4. 运行后可以看到registe login SaveDailyQuote GetDailyQuote 的api路径 
+4. 运行后可以看到MemberRegiste Login SaveDailyQuote GetDailyQuote 的api路径 
 5. 调试接口时如果是第一次链接到 cosmos db 运行注释掉的await _cosmosdbContext.Database.EnsureCreatedAsync();
 6. 发布azfunction至远程先az login然后 func azure functionapp publish <YOUAzureFucntion_APP_NAME> 
 
