@@ -1,10 +1,11 @@
 import request from '@/utils/request'
 
-export const symbolapi = {
+export const symbolApi = {
   GetDailyQuote: (tscode) => {
-    return request({
-      method: "get",
-      url: `GetDailyQuote/${tscode}`,
-    });
+    return get(`GetDailyQuote/${tscode}`);
   },
 };
+
+export function get(url) {
+  return request({ url, method: "get" });
+}

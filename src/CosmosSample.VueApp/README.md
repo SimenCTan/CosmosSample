@@ -2,10 +2,10 @@
 
 ## 环境配置
 - 本地开发  
-本地开发时，请将.env.development中的AzFunction的地址，会有cors的问题
+本地开发时，请将.env.development中的AzFunction的地址
 
 ```bash
-在az function项目local.settings.json文件配置
+cors的问题在az function项目local.settings.json文件配置
 "Host": {
     "LocalHttpPort": 7071,
     "CORS": "*"

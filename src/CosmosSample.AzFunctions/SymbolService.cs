@@ -39,7 +39,7 @@ namespace CosmosSample.AzFunctions
             log.LogInformation($"get {tscode} daily quote");
             var existSymbol = await _cosmosdbContext.Symbols.WithPartitionKey(tscode).FirstOrDefaultAsync();
             if (existSymbol == null) return new BadRequestObjectResult(response.Code = -1);
-            response.Data = _mapper.Map<List<DailyQuoteViewModel>>(existSymbol.DailyQuotes);
+            response.Data = _mapper.Map<List<DailyQuoteViewModel>>(existSymbol.DailyQuotes.OrderBy(m=>m.TradeDay));
             return new OkObjectResult(response);
         }
 

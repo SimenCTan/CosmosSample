@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosSample.MauiDemo", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosSample_AzFunctions", "src\CosmosSample.AzFunctions\CosmosSample_AzFunctions.csproj", "{37C798F2-0F30-4B3F-8DB9-9789810C90FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosSample.MauiAzApp", "src\CosmosSample.MauiAzApp\CosmosSample.MauiAzApp.csproj", "{A91A2ABF-8314-41B8-94FB-15B358A5D425}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{37C798F2-0F30-4B3F-8DB9-9789810C90FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37C798F2-0F30-4B3F-8DB9-9789810C90FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37C798F2-0F30-4B3F-8DB9-9789810C90FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A91A2ABF-8314-41B8-94FB-15B358A5D425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A91A2ABF-8314-41B8-94FB-15B358A5D425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A91A2ABF-8314-41B8-94FB-15B358A5D425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A91A2ABF-8314-41B8-94FB-15B358A5D425}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{8FCF58DC-7B0A-4A5E-B1E5-7932A82E1823} = {4516D462-693F-45ED-A0F1-5B12121244E9}
 		{35ECAF76-40D5-4079-ADC8-8EE37B1F9296} = {4516D462-693F-45ED-A0F1-5B12121244E9}
 		{37C798F2-0F30-4B3F-8DB9-9789810C90FA} = {4516D462-693F-45ED-A0F1-5B12121244E9}
+		{A91A2ABF-8314-41B8-94FB-15B358A5D425} = {4516D462-693F-45ED-A0F1-5B12121244E9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D1E44C8-F998-45C3-BCC4-C0887B034CCD}

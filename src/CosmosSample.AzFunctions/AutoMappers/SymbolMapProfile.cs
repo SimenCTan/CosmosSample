@@ -13,9 +13,7 @@ namespace CosmosSample_AzFunctions.AutoMappers
     {
         public SymbolMapProfile()
         {
-            CreateMap<DailyQuote, DailyQuoteViewModel>()
-                .ForMember(dest => dest.OpenPrice, opt => opt.MapFrom(src => src.Open))
-                .ForMember(dest => dest.ClosePrice, opt => opt.MapFrom(src => src.Close));
-        } 
+            CreateMap<DailyQuote, DailyQuoteViewModel>();
+        }
     }
 }
