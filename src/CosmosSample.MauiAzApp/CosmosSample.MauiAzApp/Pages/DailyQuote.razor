@@ -1,7 +1,7 @@
 ﻿@page "/dailyquote"
 
 @using CosmosSample.MauiAzApp.Models
-@using System.Text.Json
+@using Newtonsoft.Json;
 @inject IHttpClientFactory _clientFactory
 
 <h1>Daily Quote</h1>
@@ -50,8 +50,8 @@ else
             var _azfunctionClient = _clientFactory.CreateClient("azfunction");
             var response = await _azfunctionClient.GetAsync("GetDailyQuote/000001.SZ"); //GetAsync("health");
             response.EnsureSuccessStatusCode();
-            using var responseStream = await response.Content.ReadAsStreamAsync();
-            quoteModels = await JsonSerializer.DeserializeAsync<List<DailyQuoteModel>>(responseStream);
+            var responseStr = await response.Content.ReadAsStringAsync();
+            quoteModels = (JsonConvert.DeserializeObject<ResponseResult<List<DailyQuoteModel>>>(responseStr)).Data;
         }
         catch (Exception ex)
         {
