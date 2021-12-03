@@ -18,7 +18,12 @@ public static class MauiProgram
 
 		builder.Services.AddBlazorWebView();
 		builder.Services.AddSingleton<WeatherForecastService>();
-
+        builder.Services.AddHttpClient("azfunction", c =>
+        {
+            c.BaseAddress = new Uri("your-azure-function-url");
+            c.DefaultRequestHeaders.Add("Accept", "application/json");
+            c.DefaultRequestHeaders.Add("User-Agent", "Cosmos-Sample");
+        });
 		return builder.Build();
 	}
 }

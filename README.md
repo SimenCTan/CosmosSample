@@ -26,3 +26,6 @@
 3. 登录你在az function注册的member 获取你在az function上添加的日线行情
 
 ## Maui app with Azure Function
+1. 进入目录 CosmosSample.MauiAzApp
+2. 用vs 2022打开.sln文件，更改文件MauiProgram url地址为你的azure function地址
+3. 以Android emulator运行程序 （确保安装workload maui）

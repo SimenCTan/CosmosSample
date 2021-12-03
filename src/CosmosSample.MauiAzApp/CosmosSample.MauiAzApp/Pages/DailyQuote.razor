@@ -1,0 +1,61 @@
+﻿@page "/dailyquote"
+
+@using CosmosSample.MauiAzApp.Models
+@using System.Text.Json
+@inject IHttpClientFactory _clientFactory
+
+<h1>Daily Quote</h1>
+<p>This component demonstrates fetching daily quote data from a Azure function server.</p>
+@if (quoteModels == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>营业日</th>
+				<th>开盘价</th>
+				<th>收盘价</th>
+				<th>最低价</th>
+                <th>最高价</th>
+                <th>交易量</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var dailyQuote in quoteModels)
+			{
+				<tr>
+					<td>@dailyQuote.TradeDay</td>
+					<td>@dailyQuote.Open</td>
+					<td>@dailyQuote.Close</td>
+					<td>@dailyQuote.Low</td>
+                    <td>@dailyQuote.High</td>
+                    <td>@dailyQuote.Volume</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+@code {
+    private List<DailyQuoteModel> quoteModels=default!;
+    // private HttpClient _azfunctionClient;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var _azfunctionClient = _clientFactory.CreateClient("azfunction");
+            var response = await _azfunctionClient.GetAsync("GetDailyQuote/000001.SZ"); //GetAsync("health");
+            response.EnsureSuccessStatusCode();
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+            quoteModels = await JsonSerializer.DeserializeAsync<List<DailyQuoteModel>>(responseStream);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}
