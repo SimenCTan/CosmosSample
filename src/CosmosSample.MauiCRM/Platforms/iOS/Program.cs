@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace CosmosSample.CRMMaui
+namespace CosmosSample.MauiCRM
 {
     public class Program
     {

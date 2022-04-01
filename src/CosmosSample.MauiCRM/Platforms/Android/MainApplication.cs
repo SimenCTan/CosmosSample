@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace CosmosSample.CRMMaui
+namespace CosmosSample.MauiCRM
 {
     [Application]
     public class MainApplication : MauiApplication

@@ -1,4 +1,4 @@
-﻿namespace CosmosSample.CRMMaui
+﻿namespace CosmosSample.MauiCRM
 {
     public partial class App : Application
     {

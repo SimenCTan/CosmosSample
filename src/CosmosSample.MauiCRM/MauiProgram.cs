@@ -1,4 +1,4 @@
-﻿namespace CosmosSample.CRMMaui
+﻿namespace CosmosSample.MauiCRM
 {
     public static class MauiProgram
     {
@@ -7,6 +7,7 @@
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .ConfigureEssentials()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

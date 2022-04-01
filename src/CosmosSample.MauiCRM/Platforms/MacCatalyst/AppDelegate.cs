@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace CosmosSample.CRMMaui
+namespace CosmosSample.MauiCRM
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate
