@@ -15,7 +15,8 @@ namespace CosmosSample.MauiCRM
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 })
                 .ConfigureServices()
-                .ConfigurePages();
+                .ConfigurePages()
+                .ConfigureViewModels();
 
             return builder.Build();
         }
