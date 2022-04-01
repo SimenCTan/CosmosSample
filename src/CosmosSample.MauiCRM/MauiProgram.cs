@@ -1,4 +1,6 @@
-﻿namespace CosmosSample.MauiCRM
+﻿using CosmosSample.MauiCRM.Services;
+
+namespace CosmosSample.MauiCRM
 {
     public static class MauiProgram
     {
@@ -11,7 +13,8 @@
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                });
+                })
+                .ConfigureServices();
 
             return builder.Build();
         }
