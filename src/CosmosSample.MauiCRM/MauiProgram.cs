@@ -1,4 +1,4 @@
-﻿using CosmosSample.MauiCRM.Services;
+﻿using CosmosSample.MauiCRM.Pages;
 
 namespace CosmosSample.MauiCRM
 {
@@ -14,7 +14,8 @@ namespace CosmosSample.MauiCRM
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 })
-                .ConfigureServices();
+                .ConfigureServices()
+                .ConfigurePages();
 
             return builder.Build();
         }
