@@ -14,6 +14,7 @@ public static class ViewModelExtensions
         builder.Services.AddSingleton<DashboardViewModel>();
         builder.Services.AddSingleton<SalesViewModel>();
         builder.Services.AddSingleton<MarketingViewModel>();
+        builder.Services.AddSingleton<ShellViewModel>();
         return builder;
     }
 }

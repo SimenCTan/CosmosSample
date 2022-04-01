@@ -11,9 +11,9 @@ internal static class PagesExtensions
     public static MauiAppBuilder ConfigurePages(this MauiAppBuilder builder)
     {
         // main tabs of the app
-        builder.Services.AddSingleton<Dashboard>();
-        builder.Services.AddSingleton<Sales>();
-        builder.Services.AddSingleton<Marketing>();
+        builder.Services.AddSingleton<DashboardPage>();
+        builder.Services.AddSingleton<SalesPage>();
+        builder.Services.AddSingleton<MarketingPage>();
         builder.Services.AddSingleton<SettingsPage>();
 
 
