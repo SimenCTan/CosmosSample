@@ -13,6 +13,10 @@ namespace CosmosSample.MauiCRM
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("Segoe-Ui-Bold.ttf", "SegoeUiBold");
+                    fonts.AddFont("Segoe-Ui-Regular.ttf", "SegoeUiRegular");
+                    fonts.AddFont("Segoe-Ui-Semibold.ttf", "SegoeUiSemibold");
+                    fonts.AddFont("Segoe-Ui-Semilight.ttf", "SegoeUiSemilight");
                 })
                 .ConfigureServices()
                 .ConfigurePages()
