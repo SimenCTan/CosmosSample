@@ -5,7 +5,7 @@
              xmlns:viewmodels="clr-namespace:CosmosSample.MauiCRM.ViewModels"
              x:DataType="viewmodels:ShellViewModel"
              FlyoutBehavior="Locked"
-             x:Class="CosmosSample.MauiCRM.DesktopShell">
+             x:Class="CosmosSample.MauiCRM.Pages.DesktopShell">
     <Shell.BindingContext>
         <viewmodels:ShellViewModel/>
     </Shell.BindingContext>

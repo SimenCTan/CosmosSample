@@ -1,4 +1,4 @@
-﻿namespace CosmosSample.MauiCRM;
+﻿namespace CosmosSample.MauiCRM.Pages;
 
 public partial class DashboardPage : ContentPage
 {
