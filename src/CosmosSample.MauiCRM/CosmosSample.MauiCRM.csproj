@@ -11,10 +11,10 @@
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 
 		<!-- Display name -->
-		<ApplicationTitle>CosmosSample.MauiCRM</ApplicationTitle>
+		<ApplicationTitle>Mars CRM</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.cosmossample.mauicrm</ApplicationId>
+		<ApplicationId>com.companyname.marscrm</ApplicationId>
 		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">34AB2F70-FEA2-4A35-A875-753F76FF5E95</ApplicationId>
 
 		<!-- Versions -->
@@ -99,6 +99,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\MarketingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\MobileShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SalesPage.xaml">

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CosmosSample.MauiCRM.ViewModels"
+             xmlns:pages="clr-namespace:CosmosSample.MauiCRM.Pages"
+             x:Class="CosmosSample.MauiCRM.Pages.MobileShell"
+             x:DataType="viewmodels:ShellViewModel">
+    <Shell.BindingContext>
+        <viewmodels:ShellViewModel/>
+    </Shell.BindingContext>
+    <TabBar>
+        <Tab Title="{Binding Dashboard.Title}"
+             Icon="{Binding Dashboard.Icon}">
+            <ShellContent ContentTemplate="{DataTemplate pages:DashboardPage}"/>
+        </Tab>
+        <Tab Title="{Binding Sales.Title}"
+             Icon="{Binding Sales.Icon}">
+            <ShellContent ContentTemplate="{DataTemplate pages:SalesPage}"/>
+        </Tab>
+        <Tab Title="{Binding Marketing.Title}"
+             Icon="{Binding Marketing.Icon}">
+            <ShellContent ContentTemplate="{DataTemplate pages:MarketingPage}"/>
+        </Tab>
+        <Tab Title="{Binding Settings.Title}"
+             Icon="{Binding Settings.Icon}">
+            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+        </Tab>
+    </TabBar>
+</Shell>
