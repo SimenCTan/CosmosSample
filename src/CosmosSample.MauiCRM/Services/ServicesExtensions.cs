@@ -10,11 +10,10 @@ namespace CosmosSample.MauiCRM.Services
     {
         public static MauiAppBuilder ConfigureServices(this MauiAppBuilder builder)
         {
-            builder.Services.AddHttpClient("azfunction", c =>
-            {
-                c.BaseAddress = new Uri(Config.APIUrl);
-                c.DefaultRequestHeaders.Add("Accept", "application/json");
-                c.DefaultRequestHeaders.Add("User-Agent", "Cosmos-Sample");
+            builder.Services.AddHttpClient<SalesService>(httpClient => {
+                httpClient.BaseAddress = new Uri(Config.APIUrl);
+                httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+                httpClient.DefaultRequestHeaders.Add("User-Agent", "Cosmos-Sample");
             });
             return builder;
         }

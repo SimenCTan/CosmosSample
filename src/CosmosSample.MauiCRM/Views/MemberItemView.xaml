@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HorizontalStackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:entities="clr-namespace:CosmosSample.Domain.Entities;assembly=CosmosSample.Domain"
+             x:Class="CosmosSample.MauiCRM.Views.MemberItemView"
+             x:DataType="entities:MemberEntity"
+             x:Name="memberItemView">
+    <Grid Margin="22" IsVisible="true" Padding="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="{Binding FullName}" FontAttributes="Bold" Margin="20" Padding="0,0,0,10"/>
+        <Label Grid.Column="1" Text="{Binding Email}" Margin="20" Padding="0,0,0,10"/>
+        <Label Grid.Column="2" Text="{Binding Mobile}" HorizontalTextAlignment="End" Margin="20" Padding="0,0,0,10"/>
+    </Grid>
+</HorizontalStackLayout>

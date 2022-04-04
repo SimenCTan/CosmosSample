@@ -1,12 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:scg="clr-namespace:System.Collections.Generic;assembly=netstandard"
              xmlns:res="clr-namespace:CosmosSample.MauiCRM.Resources.Strings"
+             xmlns:viewmodels="clr-namespace:CosmosSample.MauiCRM.ViewModels"
+             xmlns:controls="clr-namespace:CosmosSample.MauiCRM.Controls"
+             xmlns:views="clr-namespace:CosmosSample.MauiCRM.Views"
              x:Class="CosmosSample.MauiCRM.Pages.SalesPage"
+             x:DataType="viewmodels:SalesViewModel"
              Title="{x:Static res:AppResource.Sales}">
-    <StackLayout>
+    <!--<StackLayout>
         <Label Text="Welcome to .NET MAUI!"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
-    </StackLayout>
+    </StackLayout>-->
+    <Grid BackgroundColor="{StaticResource Grey1}">
+        <StackLayout Margin="10,0">
+            <controls:HeaderControl TextToSearch="{Binding Text, Mode=OneWayToSource}"
+                                    SearchCommand="{Binding SearchCommand}"
+                                    VerticalOptions="Start"/>
+        </StackLayout>
+        <CollectionView Margin="20" ItemsSource="{Binding Members}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 Span="{OnIdiom Phone=2,Tablet=3,Desktop=4}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <views:MemberItemView/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="{x:Null}">
+                    <Label Text="Sales"
+                           Style="{StaticResource BaseStyle}"
+                           FontSize="32" />
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>
